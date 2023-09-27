@@ -1,0 +1,21 @@
+#If you use threads, add -pthread here.
+COMPILERFLAGS = -g -Wall -Wextra -Wno-sign-compare
+
+#Any libraries you might need linked in.
+LINKLIBS = -lpthread
+
+#The components of each program. When you create a src/foo.c source file, add obj/foo.o here, separated
+#by a space (e.g. SOMEOBJECTS = obj/foo.o obj/bar.o obj/baz.o).
+SERVEROBJECTS = obj/receiver_main.o
+CLIENTOBJECTS = obj/sender_main.o
+
+#Every rule listed here as .PHONY is "phony": when you say you want that rule satisfied,
+#Make knows not to bother checking whether the file exists, it just runs the recipes regardless.
+#(Usually used for rules whose targets are conceptual, rather than real files, such as 'clean'.
+#If you DIDNT mark clean phony, then if there is a file named 'clean' in your directory, running
+#`make clean` would do nothing!!!)
+.PHONY: all clean
+
+#The first rule in the Makefile is the default (the one chosen by plain `make`).
+#Since 'all' is first in this file, both `make all` and `make` do the same thing.
+#(`make ob
